@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @import "uniwind";
 
+@theme {
+    --font-sans: "Inter_400Regular";
+    --font-light: "Inter_300Light";
+    --font-normal: "Inter_400Regular";
+    --font-medium: "Inter_500Medium";
+    --font-semibold: "Inter_600SemiBold";
+    --font-bold: "Inter_700Bold";
+    --font-black: "Inter_900Black";
+}
+
 @layer theme {
     :root {
         @variant dark {
@@ -14,6 +24,10 @@
 
             --color-foreground: #363130;
             --color-foreground-secondary: #fff;
+
+            --color-destructive: #e55b48;
+
+            --color-border: #f4b5a4;
         }
 
         @variant light {
@@ -27,6 +41,18 @@
 
             --color-foreground: #363130;
             --color-foreground-secondary: #fff;
+
+            --color-destructive: #e55b48;
+
+            --color-border: #f4b5a4;
         }
     }
+}
+
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+@utility flex-row-center {
+    @apply flex flex-row justify-center items-center;
 }

@@ -1,17 +1,56 @@
-import { Text, View, StyleSheet } from "react-native";
+import { AppText } from "@/shared/components/ui";
+import { View, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Image } from "expo-image";
+import { IMAGES } from "@/shared/constants";
+import { Button } from "@/shared/components/buttons";
+import { router } from "expo-router";
 
-export default function Index() {
+export default function LandingScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Edit src/app/index.tsx to edit this screen.</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View className="flex-1 flex-center gap-8 px-safe-offset-4">
+        <View className="gap-3 flex-center">
+          <Image source={IMAGES.landing} style={{ width: 175, height: 147 }} />
+          <AppText
+            variant="bold"
+            className="uppercase text-6xl tracking-wider text-primary"
+          >
+            home
+          </AppText>
+          <AppText
+            variant="medium"
+            className="uppercase text-5xl -mt-3 tracking-widest text-primary"
+          >
+            decor
+          </AppText>
+        </View>
+
+        <View className="w-80">
+          <AppText className="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod.
+          </AppText>
+        </View>
+
+        <View className="gap-3">
+          <Button
+            size={`lg`}
+            className="w-52"
+            onPress={() => router.navigate("/login")}
+          >
+            Log In
+          </Button>
+          <Button
+            size={`lg`}
+            variant={`secondary`}
+            className="w-52"
+            onPress={() => router.navigate("/sign-up")}
+          >
+            Sign Up
+          </Button>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
