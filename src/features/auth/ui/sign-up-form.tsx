@@ -53,7 +53,7 @@ export const SignUpForm = () => {
       type: "success",
       text1: "Sign up successful",
     });
-    router.navigate("/home");
+    router.navigate("/onboarding");
   };
 
   return (

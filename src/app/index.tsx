@@ -1,12 +1,19 @@
-import { AppText } from "@/shared/components/ui";
-import { View, Text } from "react-native";
+import { AppText, LoadingScreen } from "@/shared/components/ui";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import { IMAGES } from "@/shared/constants";
 import { Button } from "@/shared/components/buttons";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
+import { authClient } from "@/features/auth/lib";
 
 export default function LandingScreen() {
+  const { data: session, isPending } = authClient.useSession();
+
+  if (isPending) return <LoadingScreen />;
+
+  if (session) return <Redirect href={`/onboarding`} />;
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View className="flex-1 flex-center gap-8 px-safe-offset-4">
