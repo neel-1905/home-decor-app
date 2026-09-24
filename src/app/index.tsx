@@ -6,25 +6,47 @@ import { IMAGES } from "@/shared/constants";
 import { Button } from "@/shared/components/buttons";
 import { Redirect, router } from "expo-router";
 import { authClient } from "@/features/auth/lib";
+import { userQueries } from "@/features/users/hooks";
+import { useQuery } from "@tanstack/react-query";
 
 export default function LandingScreen() {
-  const { data: session, isPending } = authClient.useSession();
+  const { data: session, isPending: isSessionPending } =
+    authClient.useSession();
 
-  if (isPending) return <LoadingScreen />;
+  const { data: user, isLoading: isUserLoading } = useQuery({
+    ...userQueries.me(),
+    enabled: !!session,
+  });
 
-  if (session) return <Redirect href={`/onboarding`} />;
+  if (isSessionPending) {
+    return <LoadingScreen />;
+  }
+
+  if (session && isUserLoading) {
+    return <LoadingScreen />;
+  }
+
+  if (session && user) {
+    if (!user.isOnboardingComplete) {
+      return <Redirect href="/onboarding" />;
+    }
+
+    return <Redirect href="/home" />;
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View className="flex-1 flex-center gap-8 px-safe-offset-4">
         <View className="gap-3 flex-center">
           <Image source={IMAGES.landing} style={{ width: 175, height: 147 }} />
+
           <AppText
             variant="bold"
             className="uppercase text-6xl tracking-wider text-primary"
           >
             home
           </AppText>
+
           <AppText
             variant="medium"
             className="uppercase text-5xl -mt-3 tracking-widest text-primary"
@@ -42,15 +64,16 @@ export default function LandingScreen() {
 
         <View className="gap-3">
           <Button
-            size={`lg`}
+            size="lg"
             className="w-52"
             onPress={() => router.navigate("/login")}
           >
             Log In
           </Button>
+
           <Button
-            size={`lg`}
-            variant={`secondary`}
+            size="lg"
+            variant="secondary"
             className="w-52"
             onPress={() => router.navigate("/sign-up")}
           >

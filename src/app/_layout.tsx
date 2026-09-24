@@ -17,6 +17,7 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 import { NavigationBar } from "expo-navigation-bar";
 import Toast from "react-native-toast-message";
 import { ErrorToast, SuccessToast } from "@/shared/components/ui";
+import { QueryProvider } from "@/shared/providers";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,14 +43,16 @@ export default function RootLayout() {
   return (
     <KeyboardProvider navigationBarTranslucent statusBarTranslucent>
       <NavigationBar style="auto" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: {
-            backgroundColor: colors.background,
-          },
-        }}
-      />
+      <QueryProvider>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: {
+              backgroundColor: colors.background,
+            },
+          }}
+        />
+      </QueryProvider>
       <StatusBar
         translucent
         barStyle="dark-content"

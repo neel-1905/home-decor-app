@@ -9,5 +9,5 @@ export default function ProtectedLayout() {
 
   if (!session) return <Redirect href={`/`} />;
 
-  return <Stack />;
+  return <Stack screenOptions={{ headerShown: false }} />;
 }

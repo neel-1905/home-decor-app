@@ -10,7 +10,7 @@ export const ScreenContentWrapper = ({
   className?: string;
 }) => {
   return (
-    <View className={cn("pt-safe-offset-3 px-safe-offset-4", className)}>
+    <View className={cn("py-safe-offset-3 px-safe-offset-4", className)}>
       {children}
     </View>
   );
