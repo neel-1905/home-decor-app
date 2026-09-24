@@ -15,6 +15,8 @@ import { useEffect } from "react";
 import { StatusBar } from "react-native";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { NavigationBar } from "expo-navigation-bar";
+import Toast from "react-native-toast-message";
+import { ErrorToast, SuccessToast } from "@/shared/components/ui";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -52,6 +54,13 @@ export default function RootLayout() {
         translucent
         barStyle="dark-content"
         backgroundColor="transparent"
+      />
+
+      <Toast
+        config={{
+          success: (props) => <SuccessToast {...props} />,
+          error: (props) => <ErrorToast {...props} />,
+        }}
       />
     </KeyboardProvider>
   );

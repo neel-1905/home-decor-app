@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Button } from "@/shared/components/buttons";
 import { Link, router } from "expo-router";
 import { AppText } from "@/shared/components/ui";
+import Toast from "react-native-toast-message";
 
 export const LoginForm = () => {
   const {
@@ -26,9 +27,21 @@ export const LoginForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const onSubmit = async (data: LoginFormValues) => {
-    await authClient.signIn.email({
+    const { error } = await authClient.signIn.email({
       email: data.email,
       password: data.password,
+    });
+    if (error) {
+      Toast.show({
+        type: "error",
+        text1: "Login failed",
+        text2: error.message,
+      });
+      return;
+    }
+    Toast.show({
+      type: "success",
+      text1: "Login successful",
     });
     router.navigate("/home");
   };

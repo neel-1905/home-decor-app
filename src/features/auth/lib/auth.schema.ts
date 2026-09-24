@@ -14,7 +14,13 @@ export const signUpSchema = z
 
     email: z.email("Invalid email id"),
 
-    mobile: z.string().regex(/^[0-9]{10}$/, "Mobile number must be 10 digits"),
+    mobile: z
+      .string()
+      .min(1, "Mobile number is required")
+      .regex(
+        /^(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
+        "Please enter a valid mobile number with country code",
+      ),
 
     dob: z.string().min(1, "Date of birth is required"),
 
