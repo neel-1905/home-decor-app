@@ -26,7 +26,7 @@ export function BaseInput({
       )}
       <View
         className={cn(
-          "border rounded-2xl py-1 px-3 flex-row items-center gap-2",
+          "border rounded-full py-1 px-3 flex-row items-center gap-2",
           error ? "border-destructive" : "border-border",
         )}
       >

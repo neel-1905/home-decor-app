@@ -88,7 +88,7 @@ export function Button({
       {...props}
     >
       {loading ? (
-        <ActivityIndicator size="small" />
+        <ActivityIndicator size={28} />
       ) : (
         <Text className={cn(textVariants({ variant, size }), textClassName)}>
           {label || children}

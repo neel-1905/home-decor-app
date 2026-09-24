@@ -2,18 +2,26 @@ import { ReactNode } from "react";
 import { View } from "react-native";
 import { Heading } from "./heading";
 import { BackButton } from "../buttons";
+import { cn } from "@/shared/utils";
 
 export const ScreenHeading = ({
   leftContent = <BackButton />,
   rightContent,
   title,
+  className,
 }: {
   leftContent?: ReactNode;
   rightContent?: ReactNode;
   title: string;
+  className?: string;
 }) => {
   return (
-    <View className="relative flex-row justify-between items-center px-safe-offset-4 min-h-11">
+    <View
+      className={cn(
+        "relative flex-row justify-between items-center min-h-11",
+        className,
+      )}
+    >
       {/* Left content */}
       <View className="z-10">{leftContent}</View>
 

@@ -11,7 +11,7 @@ export const Heading = ({
   return (
     <AppText
       variant="semibold"
-      className={cn("text-xl text-primary", className)}
+      className={cn("text-xl text-primary-dark", className)}
     >
       {text}
     </AppText>
