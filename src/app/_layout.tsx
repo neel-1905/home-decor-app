@@ -12,6 +12,9 @@ import {
   Inter_900Black,
 } from "@expo-google-fonts/inter";
 import { useEffect } from "react";
+import { StatusBar } from "react-native";
+import { KeyboardProvider } from "react-native-keyboard-controller";
+import { NavigationBar } from "expo-navigation-bar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,13 +38,21 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: {
-          backgroundColor: colors.background,
-        },
-      }}
-    />
+    <KeyboardProvider navigationBarTranslucent statusBarTranslucent>
+      <NavigationBar style="auto" />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: {
+            backgroundColor: colors.background,
+          },
+        }}
+      />
+      <StatusBar
+        translucent
+        barStyle="dark-content"
+        backgroundColor="transparent"
+      />
+    </KeyboardProvider>
   );
 }
