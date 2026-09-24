@@ -24,6 +24,10 @@
 
             --color-foreground: #363130;
             --color-foreground-secondary: #fff;
+
+            --color-destructive: #e55b48;
+
+            --color-border: #f4b5a4;
         }
 
         @variant light {
@@ -37,6 +41,10 @@
 
             --color-foreground: #363130;
             --color-foreground-secondary: #fff;
+
+            --color-destructive: #e55b48;
+
+            --color-border: #f4b5a4;
         }
     }
 }

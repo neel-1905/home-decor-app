@@ -3,6 +3,8 @@ import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import { IMAGES } from "@/shared/constants";
+import { Button } from "@/shared/components/buttons";
+import { router } from "expo-router";
 
 export default function LandingScreen() {
   return (
@@ -31,7 +33,23 @@ export default function LandingScreen() {
           </AppText>
         </View>
 
-        <View></View>
+        <View className="gap-3">
+          <Button
+            size={`lg`}
+            className="w-52"
+            onPress={() => router.navigate("/login")}
+          >
+            Log In
+          </Button>
+          <Button
+            size={`lg`}
+            variant={`secondary`}
+            className="w-52"
+            onPress={() => router.navigate("/sign-up")}
+          >
+            Sign Up
+          </Button>
+        </View>
       </View>
     </SafeAreaView>
   );
