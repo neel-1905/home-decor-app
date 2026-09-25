@@ -23,6 +23,7 @@
             --color-background: #fff;
 
             --color-foreground: #363130;
+            --color-foreground-muted: #cac7c0;
             --color-foreground-secondary: #fff;
 
             --color-destructive: #e55b48;
@@ -40,6 +41,7 @@
             --color-background: #fff;
 
             --color-foreground: #363130;
+            --color-foreground-muted: #cac7c0;
             --color-foreground-secondary: #fff;
 
             --color-destructive: #e55b48;

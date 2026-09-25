@@ -10,6 +10,7 @@ export function useTheme() {
     secondary,
     background,
     foreground,
+    foregroundMuted,
     foregroundSecondary,
   ] = useCSSVariable([
     "--color-primary",
@@ -18,6 +19,7 @@ export function useTheme() {
     "--color-secondary",
     "--color-background",
     "--color-foreground",
+    "--color-foreground-muted",
     "--color-foreground-secondary",
   ]);
 
@@ -31,6 +33,7 @@ export function useTheme() {
       secondary,
       background,
       foreground,
+      foregroundMuted,
       foregroundSecondary,
     } as Record<string, string>,
   };
